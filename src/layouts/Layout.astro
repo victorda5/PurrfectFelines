@@ -8,10 +8,15 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Explore our feline haven: captivating cat images, detailed breed insights, and a wealth of knowledge, guiding enthusiasts and potential cat owners on a seamless journey into the world of felines."
+    />
+    <meta name="keywords" content="Cats, Breeds, Felines, Images" />
+    <meta name="author" content="Víctor Davó" />
     <title>{title}</title>
   </head>
   <body class="bg-darkbg1 text-white relative mx-auto">
@@ -21,15 +26,15 @@ const { title } = Astro.props;
   </body>
 
   <style is:global>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
 
-    body{
+    body {
       font-family: Montserrat;
     }
 
-      html{
-        scrollbar-gutter: stable;
-      }
+    html {
+      scrollbar-gutter: stable;
+    }
 
     * {
       -webkit-tap-highlight-color: transparent;
@@ -55,6 +60,5 @@ const { title } = Astro.props;
       background-color: #282828;
       border-radius: 4px;
     }
-
   </style>
 </html>
