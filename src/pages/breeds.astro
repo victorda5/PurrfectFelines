@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CatBreedList from "../components/CatBreedList.astro";
+import SearchBox from "../components/SearchBox.astro";
+import LoaderSpinner from "../components/LoaderSpinner.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="Purrfect Felines - Breeds">
+    <Header page="breeds"/>
+    <main class="main max-w-screen-xl mx-auto min-h-screen">
+        <section class="px-4 sm:px-6 lg:px-8 mx-auto w-full pt-20 sm:pt-24 mb-4">
+            <h1 class="text-[30px] leading-[40px] text-center sm:text-left mb-0 sm:text-[38px] sm:leading-[42px] md:text-[50px] font-bold md:leading-[60px] sm:mb-4 mt-2 sm:mt-8">Cat <span class="text-accent">Breeds</span></h1>
+            <h2 class="text-lg sm:text-2xl text-center sm:text-left text-text2 font-semibold">Get to know everything about each breed</h2>
+            <SearchBox />        
+            <div class="grid gap-4 sm:grid-cols-3 mt-4" id="anchor-container">
+            <LoaderSpinner />
+            <CatBreedList />
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    h2{
+      text-wrap: balance;
+    }
+</style>

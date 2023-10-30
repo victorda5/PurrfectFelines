@@ -1,0 +1,19 @@
+---
+import { displayCats } from "../services/catapi";
+import { Image } from 'astro:assets';
+
+const cats = await displayCats();
+---
+
+{
+    cats.map((cat) => (
+      <div class="bg-darkbg2 rounded-2xl mt-4 overflow-hidden">
+        <a href= `/cats/${cat.breeds[0].id}` >
+          <h2 class="tracking-wide font-bold py-3 text-xl text-center">{cat.breeds[0].name}</h2>
+          <div class="relative aspect-square w-full overflow-hidden bg-[url('/img-placeholder.png')] bg-center bg-cover">
+            <Image class="object-cover w-full h-full hover:scale-105 transition duration-300" src={cat.url} alt={cat.breeds[0].name} width={cat.width} height={cat.height} quality={"low"} />
+          </div>
+        </a>
+      </div>
+    ))
+}

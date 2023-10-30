@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../public/logo.png";
+---
+
+<footer class="max-w-screen-xl shadow bg-transparent px-4 sm:px-6 lg:px-8 mx-auto">
+    <div class="w-full mx-auto py-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="/" class="flex items-center mb-4 sm:mb-0">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white hover:text-accent transition"><Image src={logo} width=150 alt="Purrfect Felines Logo"></span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0">
+                <li>
+                    <a href="/" class="mr-4 hover:text-accent transition md:mr-6">Home</a>
+                </li>
+                <li>
+                    <a href="/gallery" class="mr-4 hover:text-accent transition md:mr-6">Gallery</a>
+                </li>
+                <li>
+                    <a href="/breeds" class="mr-4 hover:text-accent transition md:mr-6 ">Breeds</a>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-6 border-darkbg2 border-2 sm:mx-auto lg:my-8" />
+        <span class="block text-sm sm:text-center">© 2023 <a target="_blank" href="https://victor-davo.vercel.app/" class="hover:text-accent transition">Víctor Davó</a> All Rights Reserved.</span>
+    </div>
+</footer>

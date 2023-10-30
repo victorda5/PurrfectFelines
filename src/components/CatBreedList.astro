@@ -1,0 +1,11 @@
+---
+import CatBreedCard from "./CatBreedCard.astro";
+const res = await fetch("https://api.thecatapi.com/v1/breeds/?api_key=live_C99hOix4TAiVvixtDB3hW3RRvie2yhQAhfvbPVWVeLH5Imy1vq3GnHcaIAi0rC8V&size=small");
+const cats = await res.json();
+---
+
+{
+  cats.map((cat) => (
+    <CatBreedCard origin={cat.origin} breed={cat.id} name={cat.name} />
+  ))
+}

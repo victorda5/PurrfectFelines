@@ -1,0 +1,97 @@
+---
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getCatList } from "../../services/catapi";
+import { getCatBy } from "../../services/catapi";
+import { getCatImage } from "../../services/catapi";
+import { getCatByBreed } from "../../services/catapi";
+
+const { breed } = Astro.params;
+
+let cat;
+if (breed) {
+  cat = await getCatBy({ breed });
+}
+
+export async function getStaticPaths() {
+  const cats = await getCatList();
+
+  return cats.map((cat) => ({
+    params: { "breed": cat.id },
+  }));
+}
+
+let refId = cat.reference_image_id;
+let catRefImage = await getCatImage({ refId });
+
+let breedId = breed;
+
+let catImage = await getCatByBreed( { breedId })
+
+var temperament = cat.temperament;
+
+var temperamentArray = temperament.split(', ');
+---
+
+<Layout title={"Purrfect Felines - " + cat.name}>
+  <Header page="breeds"/>
+  <main class="max-w-screen-xl mx-auto">
+    <section class="px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 mb-4">
+  
+      <h1 class="text-[30px] leading-[40px] text-center sm:text-left mb-0 sm:text-[50px] font-bold sm:leading-[60px] sm:mb-4 mt-2 sm:mt-8">{cat.name}</h1>
+      <h2 class="text-lg sm:text-2xl text-center sm:text-left text-text2 font-semibold">{cat.origin}</h2>
+  
+      <div
+        class="flex w-auto mx-auto flex-col md:flex-row rounded-xl shadow-md bg-darkbg2 sm:mt-12 mt-6"
+      >
+        <div>
+          <div
+            class="w-full h-full lg:w-[500px] aspect-[16/12]"
+          >
+            <img
+              src={catRefImage}
+              class="rounded-t-xl sm:rounded-br-none sm:rounded-tr-none sm:rounded-l-xl object-cover w-full h-full"
+              alt=""
+            />
+          </div>
+        </div><div class="flex items-center">
+          <div class="p-4">
+          <p>{cat.description}
+            </p><p class="text-neutral-400 mt-2">Weight: {cat.weight.metric} Kg</p><p
+              class="text-neutral-400"
+            >
+              Lifespan: {cat.life_span} years
+            </p><p class="mt-2 flex gap-2">
+              <a
+                class="hover:text-accent transition"
+                href={cat.wikipedia_url} target="_blank"
+                rel="noopener noreferrer">Wikipedia</a>
+            </p><div class="mt-4 flex gap-2 flex-wrap">
+              {
+                temperamentArray.map((temperament) =>(
+                <span class="bg-darkbg3 py-1 px-2 rounded-md">{temperament.trim()}</span>
+                ))
+              }
+            </>
+          </div>
+        </div>
+      </div>
+      <section class="mt-8 rounded-lg overflow-hidden">
+        <div class="gap-4 sm:gap-8 items-center justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-row">
+          {
+            catImage.map((cats) => (
+            <div class="w-full h-full overflow-hidden rounded-xl aspect-square ">
+                <a href={cats.url} target="_blank">
+                <img src={cats.url} alt={cats.breeds[0].name} class="object-cover w-full h-full hover:scale-105 transition duration-300 bg-darkbg2">
+              </a>
+            </div>
+            ))
+          }
+        </div>
+      </section>
+      <div class="mt-6 text-center text-text2">
+        <a href="/breeds" class="hover:text-white">Browse more cats</a>
+      </div>
+    </section>
+  </main>
+</Layout>

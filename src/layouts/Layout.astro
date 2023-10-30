@@ -1,0 +1,60 @@
+---
+import Footer from "../components/Footer.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-darkbg1 text-white relative mx-auto">
+    <slot />
+    <ScrollToTop />
+    <Footer />
+  </body>
+
+  <style is:global>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+
+    body{
+      font-family: Montserrat;
+    }
+
+      html{
+        scrollbar-gutter: stable;
+      }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+    * {
+      scrollbar-width: auto;
+      scrollbar-color: #282828 #171717;
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 14px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: #171717;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: #282828;
+      border-radius: 4px;
+    }
+
+  </style>
+</html>

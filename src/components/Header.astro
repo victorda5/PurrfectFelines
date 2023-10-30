@@ -1,0 +1,60 @@
+---
+const {page} = Astro.props;
+import { Image } from "astro:assets";
+import logo from "../../public/logo.png";
+---
+
+<nav class="flex-row top-0 z-50 font-semibold w-full shadow-md fixed bg-darkbg1 border-b border-b-[#1e1e1f]" id="nav">
+  <div class="max-w-screen-xl mx-auto flex sm:justify-between px-6 lg:px-8 justify-between">
+    <ul class="gap-4 sm:gap-8 text-center text-white rounded-t-xl relative flex">
+      <a class="pr-2 py-5 hover:text-accent transition flex items-center" href="/"><Image src={logo} width=150 alt="Purrfect Felines Logo"></a>
+    </ul>
+
+    <ul class="sm:flex gap-4 sm:gap-8 text-center text-white rounded-t-xl relative hidden">
+      <a class=`${page === 'home' ? 'text-accent' : 'hover:text-accent'} px-2 py-5 transition` href="/">Home</a>
+      <a class=`${page === 'gallery' ? 'text-accent' : 'hover:text-accent'} px-2 py-5 transition` href="/gallery">Gallery</a>
+      <a class=`${page === 'breeds' ? 'text-accent' : 'hover:text-accent'} px-2 py-5 transition` href="/breeds">Breeds</a>
+    </ul>
+
+    <ul class="flex flex-col text-center text-white rounded-t-xl relative sm:hidden items-center justify-center" id="burger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </ul>
+  </div>
+
+  <div class="flex-col gap-10 text-2xl font-semibold text-center justify-center items-center mt-40 hidden" id="burger-content">
+    <a class=`${page === 'home' ? 'text-accent' : 'hover-text-accent'} transition` href="/">Home</a>
+    <a class=`${page === 'gallery' ? 'text-accent' : 'hover-text-accent'} transition` href="/gallery">Gallery</a>
+    <a class=`${page === 'breeds' ? 'text-accent' : 'hover-text-accent'} transition` href="/breeds">Breeds</a>
+  </div>
+</nav>
+
+<style>
+  .bar {
+    background-color: white;
+    height: 2px;
+    width: 20px;
+    margin: 2px 0;
+  }
+</style>
+
+<script is:inline>
+  const burger = document.getElementById("burger");
+  const nav = document.getElementById("nav");
+  const burgerList = document.getElementById("burger-content");
+  const sections = document.querySelectorAll("section");
+  const footer = document.querySelector("footer");
+
+  function toggleMenu() {
+    nav.classList.toggle("h-screen");
+    burgerList.classList.toggle("flex");
+    burgerList.classList.toggle("hidden");
+    sections.forEach((section) => {
+      section.classList.toggle("hidden");
+    });
+    footer.classList.toggle("hidden");
+  }
+
+  burger.addEventListener("click", toggleMenu);
+</script>

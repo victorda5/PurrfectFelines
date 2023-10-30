@@ -1,0 +1,28 @@
+---
+interface Props {
+  origin: string;
+  breed: string;
+  name: string;
+}
+
+const { origin, breed, name } = Astro.props;
+---
+
+<a href={`/breeds/${breed}`} class="group" id={name}>
+  <div class="h-auto bg-darkbg2 hover:bg-darkbg3 w-auto rounded-lg relative overflow-hidden shadow-md p-4 transition flex flex-row justify-between">
+    
+    <div>
+      <h2 class="text-xl font-semibold">{name}</h2>
+      <p class="text-text2">
+        {origin}
+      </p>
+    </div>
+
+    <div class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:translate-x-1 duration-300 transition">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+      </svg>
+    </div>
+    
+  </div>
+</a>

@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CatGridGallery from "../components/CatGridGallery.astro";
+import LoaderSpinner from "../components/LoaderSpinner.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="Purrfect Felines - Gallery">
+    <Header page="gallery"/>
+    <main class="max-w-screen-xl mx-auto">
+        <section class="px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 mb-4">
+            <h1 class="text-[30px] leading-[40px] text-center sm:text-left mb-0 sm:text-[38px] sm:leading-[42px] md:text-[50px] font-bold md:leading-[60px] sm:mb-4 mt-2 sm:mt-8">The Cat Hall of <span class="text-accent">Fame</span></h1>
+            <h2 class="text-lg sm:text-2xl text-center sm:text-left text-text2 font-semibold">A showcase of our prettiest ones ✨</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 sm:mt-12 mt-6 ">
+                <LoaderSpinner />
+                <CatGridGallery />
+            </div>
+            <div class="mt-6 text-center text-text2"><p>You've reached the limit of cats</p><p>Try refreshing to get more!</p></div>
+        </section>
+    </main>
+</Layout>
